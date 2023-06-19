@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - 5229:5229
+    cap_add:
+      - "SYS_TIME"
+    user: root
+    # command: docker container exec date-api-1 date -s "2023-07-15 15:15"
