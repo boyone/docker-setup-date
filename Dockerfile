@@ -1,7 +1,7 @@
 FROM mcr.microsoft.com/dotnet/aspnet:6.0-focal AS base
 # FROM mcr.microsoft.com/dotnet/aspnet:6.0-alpine AS base
 WORKDIR /app
-ENV ASPNETCORE_URLS=http://+:5229
+ENV ASPNETCORE_URLS=https://+5228;http://+:5229
 RUN apt update && apt install faketime -y
 
 # Creates a non-root user with an explicit UID and adds permission to access the /app folder
@@ -16,12 +16,16 @@ WORKDIR /app
 
 # Copy everything else and build
 COPY . ./
-RUN dotnet build "date.csproj" -c Release -o /app/out
-RUN dotnet publish "date.csproj" -c Release -o out
+# RUN dotnet build "date.csproj" -c Release -o /app/build
+RUN dotnet publish "date.csproj" -c Release -o /app/out
 # RUN dotnet publish -c Release -o out
 
-
-FROM base AS final
+FROM base AS dev
 WORKDIR /app
 COPY --from=build-env /app/out .
-ENTRYPOINT ["faketime", "2023-06-15", "dotnet", "date.dll"]
+ENTRYPOINT ["faketime", "2023-06-15 00:00:00", "dotnet", "date.dll"]
+
+FROM base AS prod
+WORKDIR /app
+COPY --from=build-env /app/out .
+ENTRYPOINT ["dotnet", "date.dll"]
