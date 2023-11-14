@@ -3,18 +3,17 @@ version: '3.8'
 services:
 
   api:
+    image: date-api-dev
     build:
       context: .
       dockerfile: Dockerfile
       target: dev
-    container_name: api
     restart: always
     ports:
       - 5229:5229
-      # - 5228:5228
+#      - 5228:5228
     # cap_add:
     #   - "SYS_TIME"
-    user: root
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:5229
