@@ -3,14 +3,14 @@ version: '3.8'
 services:
 
   api:
-    image: date-api-dev
+    image: date-api-dev:latest
     build:
       context: .
       dockerfile: Dockerfile
       target: dev
     restart: always
     ports:
-      - 5229:5229
+      - 5229-5231:5229
 #      - 5228:5228
     # cap_add:
     #   - "SYS_TIME"
@@ -22,3 +22,6 @@ services:
     volumes:
       - ~/.aspnet/https:/https:ro
     # command: docker container exec date-api-1 date -s "2023-07-15 15:15"
+    deploy:
+      mode: replicated
+      replicas: 3
