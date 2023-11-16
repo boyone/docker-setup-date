@@ -55,3 +55,6 @@ open-browser:
 # https://github.com/rakyll/hey
 hey:
 	hey -c 20 -z 5s -H "Accept: application/json" -H "Content-Type: application/json" http://localhost/WeatherForecast
+
+hey-swarm:
+	hey -c 20 -z 5s -H "Accept: application/json" -H "Content-Type: application/json" http://localhost:5229/WeatherForecast
