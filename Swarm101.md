@@ -28,7 +28,43 @@
 
 5. Deploy a new `Stack`
 
-    ```sh
-    docker stack deploy --compose-file docker-compose.yml date-api
-    ```
+   ```sh
+   docker stack deploy --compose-file docker-compose.yml date-api
+   ```
 
+6. List stacks
+
+   ```sh
+   docker stack ls
+   ```
+
+7. List the services in the stack
+
+   ```sh
+   docker stack services date-api
+   ```
+
+8. Scale one or multiple replicated services
+
+   ```sh
+   docker service scale date-api_api=4
+   ```
+
+9. Remove one or more services
+
+   ```sh
+   docker service rm registry
+   docker service rm date-api_api
+   ```
+
+   or remove by stack
+
+   ```sh
+   docker stack rm date-api
+   ```
+
+10. Leave the swarm
+
+    ```sh
+    docker swarm leave --force
+    ```
