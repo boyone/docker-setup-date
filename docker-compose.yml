@@ -9,8 +9,8 @@ services:
       dockerfile: Dockerfile
       target: dev
     restart: always
-    # ports:
-    #   - 5229-5231:5229
+    ports:
+      - 5229:5229
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:5229
@@ -20,7 +20,7 @@ services:
       mode: replicated
       replicas: 3
 
-  lb:
-    build: caddy
-    ports:
-      - 80:80
+  # lb:
+  #   build: caddy
+  #   ports:
+  #     - 80:80

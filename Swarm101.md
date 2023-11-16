@@ -25,3 +25,10 @@
    docker compose down
    docker compose push
    ```
+
+5. Deploy a new `Stack`
+
+    ```sh
+    docker stack deploy --compose-file docker-compose.yml date-api
+    ```
+
