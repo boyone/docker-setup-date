@@ -11,3 +11,17 @@
    ```sh
    docker service create --name registry --publish published=5000,target=5000 registry:2
    ```
+
+3. List services
+
+   ```sh
+   docker service ls
+   ```
+
+4. Start Docker Compose and Push Image to Registry
+
+   ```sh
+   docker compose up -d
+   docker compose down
+   docker compose push
+   ```
