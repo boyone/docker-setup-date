@@ -1,0 +1,8 @@
+http://localhost:80 {
+    reverse_proxy http://docker-setup-date-api-1:5229 http://docker-setup-date-api-2:5229 {
+        lb_policy round_robin
+        health_path /WeatherForecast
+        health_status 200
+        health_interval 3s
+    }
+}

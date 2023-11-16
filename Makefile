@@ -51,3 +51,6 @@ log:
 ## Test
 open-browser:
 	open http://localhost:5229/WeatherForecast
+
+hey:
+	hey -c 20 -z 5s -H "Accept: application/json" -H "Content-Type: application/json" http://localhost/WeatherForecast
